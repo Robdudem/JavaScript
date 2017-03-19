@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  #box{
+    width: 200px;
+    height: 200px;
+    background-color: #0000FF;
+    border-radius: 0px;
+    position: relative;
+
+}
+.bold{
+  font-weight: bold;
+}
+
+
+</style>
+</head>
+
+<body>
+
+  <h1>Test Your Reation!</h1>
+  <p>Click on the boxes and circles as quick as you can<p>
+
+  <p class = "bold"> Your time <span id = "time">0s</span></p>
+  <div id="box"></div>
+
+  <script type="text/javascript">
+
+  var clickedTime; var createdTime; var reactionTime;
+
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+function getRandomRadius(){
+
+  var random=Math.floor(Math.random()*2);
+
+  var radius = 0;
+
+  if(random == 1){
+    radius=100
+  }
+  return radius;
+}
+
+function getRandomNumber(){
+
+  var number = Math.floor(Math.random()*1000);
+
+  return number;
+}
+
+
+  function makeBox(){
+
+    createdTime = Date.now();
+
+    var time = Math.random();
+
+    time = time*5000;
+
+    setTimeout(function(){
+
+      document.getElementById("box").style.left = getRandomNumber()+"px";
+
+      document.getElementById("box").style.top = getRandomNumber()+"px";
+
+      document.getElementById('box').style.borderRadius =getRandomRadius()+"px";
+
+      document.getElementById("box").style.backgroundColor=getRandomColor();
+
+      document.getElementById("box").style.display="block";
+
+     
+    },time);
+  }
+
+
+
+  document.getElementById("box").onclick=function(){
+
+    clickedTime=Date.now();
+
+    reactionTime = (clickedTime-createdTime)/1000;
+
+    document.getElementById("time").innerHTML=reactionTime;
+
+   this.style.display="none";
+
+   makeBox();
+
+}
+makeBox();
+
+  </script>
+
+
+
+</body>
+</html>

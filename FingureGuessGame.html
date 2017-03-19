@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+
+      <Javascript>
+
+</head>
+
+<body>
+
+  <p> How many figures are you holding up?</p>
+
+  <p><select id="theGuess">
+
+    <option>0</option>
+
+    <option>1</option>
+
+    <option>2</option>
+
+    <option>3</option>
+
+    <option>4</option>
+
+    <option>5</option>
+
+  </select> <button id="checkGuess">Guess</button></p>
+
+  <p id="numTimes"></p>
+
+<script type="text/javascript">
+
+function randomValue(){
+
+return Math.floor(Math.random()*6);
+
+}
+
+document.getElementById("checkGuess").onclick = function(){
+
+  var x = document.getElementById("theGuess").value;
+
+  var y = randomValue();
+
+  var numGuess = 0;
+
+  var endStatement = "";
+
+  while (x != y) {
+
+    y = randomValue();
+
+    numGuess++;
+
+  }
+
+  endStatement = endStatement + "<p>" + "It took me " + numGuess + " times to get your answer of " + x + "</p>";
+
+document.getElementById("numTimes").innerHTML =endStatement;
+
+
+}
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
